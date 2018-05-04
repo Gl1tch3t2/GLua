@@ -1,4 +1,7 @@
 --change bullet to tracer line of electricity
+
+-- This is the last item I worked on and as such has the best code, it is actually not too far from my current skill level.
+
 AddCSLuaFile()
 
 SWEP.HoldType = "ar2"
@@ -63,6 +66,7 @@ SWEP.DeploySpeed = 1
 
 local mysteryUse = {}
 
+-- Not my code, but I have no idea who the original author is as it is found everywhere
 local function CheckIfEmpty(vec)
 	local NewVec = vec
 	NewVec.z = NewVec.z + 35
@@ -102,7 +106,9 @@ function SWEP:PrimaryAttack()
   if not tr.HitWorld then return end
   print(tr.HitPos:DistToSqr(ply:GetPos()))
 	if tr.HitPos:DistToSqr(ply:GetPos()) > 10000 or tr.HitPos:DistToSqr(ply:GetPos()) < 2000 then return end --If you manage to get it stuck in a wall now, your problem, not mine, sorry
-  if SERVER and self.Owner:OnGround() then
+  	-- Although DistToSqr is here, originally this was Distance, this is an expensive function BUT
+	-- as it should only ever be called at max a handful of times, it should be fine to use here instead.
+	if SERVER and self.Owner:OnGround() then
     local myst = ents.Create("ttt_mystery_wepbox")
     myst:SetPos(self.Owner:GetPos() + self.Owner:GetForward() *50)
     myst:SetPos(Vector(myst:GetPos().x, myst:GetPos().y, self.Owner:GetPos().z))
