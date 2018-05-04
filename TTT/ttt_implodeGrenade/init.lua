@@ -1,4 +1,8 @@
-include("shared.lua")
+--include("shared.lua")
+
+
+-- This file is largely copied from TTT's Discombobulator, as such I do not take credit for much of this code,
+-- the source is available on github: https://github.com/Facepunch/garrysmod/tree/master/garrysmod/gamemodes/terrortown
 
 
 -- AddCSLuaFile()
